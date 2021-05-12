@@ -14,4 +14,9 @@ public class SpringBootConfig {
 	public MyDao myDao() {
 		return new MyDao();
 	}
+	
+//	@Bean
+//	public DatabaseConfig databaseConfig() {
+//		return new DatabaseConfig();
+//	}
 }

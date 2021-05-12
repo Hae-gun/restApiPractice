@@ -26,11 +26,16 @@ public class MainController {
 	
 	
 	@PostMapping("/M/{paramId}")
-	public Map M(@PathVariable String paramId,@RequestParam("data") String data) {
-//		Map<String,String> m = new HashMap<>();
-		memory.put(paramId, mydao.test(data));
+	public Map M(@PathVariable String paramId,@RequestParam String data) {
+		Map<String,String> m = new HashMap<>();
 		System.out.println("M Connection Detected");
-		return memory; 
+		if(memory.containsKey(paramId)) {
+			m.put("result", paramId+" 수정");
+		}else {
+			m.put("result", paramId+" 등록완료");
+		}
+		memory.put(paramId, mydao.test(data));
+		return m;
 	}
 	
 	@GetMapping("/M/{paramId}")
